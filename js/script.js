@@ -72,7 +72,7 @@ function initMap(latitude, longitude) {
                         var safety = "";
                         if (d['crimes'].length <= 20)
                             safety = "<span id='myBadge' class='badge new black-text' green>SAFE</span></a>";
-                        else if (20 < d['crimes'].length && d['crimes'].length <= 40)
+                        else if (30 < d['crimes'].length && d['crimes'].length <= 100)
                             safety = "<span id='myBadge' class='badge new black-text yellow'>MODERATE</span></a>"
                         else
                             safety = "<span id='myBadge' class='badge new black-text red'>STAY ALERT</span></a>"
