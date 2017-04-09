@@ -32,14 +32,13 @@ function initMap(latitude, longitude) {
 
         map.addListener('click',function(e){
 
-          var marker = new google.maps.Marker({
-            position: e.latLng,
-            map: map
-        });
-
+            var marker = new google.maps.Marker({
+                position: e.latLng,
+                map: map
+            });
+            $('.content').empty();
         latitude = e.latLng.lat();
         longitude = e.latLng.lng();
-
 
         $.ajax({
             url: "https://e01b0067.ngrok.io/SafeNess/index.php?lat="+latitude+"&lon="+longitude+"&rad=1&key=eb6065587d974500fa01af34b0cce99b",
@@ -71,13 +70,12 @@ function initMap(latitude, longitude) {
                     success: function(d) {
 
                         var safety = "";
-                        //clear span
                         if (d['crimes'].length <= 8)
-                            safety = "<span class='badge new black-text'>SAFE</span></a>";
+                            safety = "<span id='myBadge' class='badge new black-text' green>SAFE</span></a>";
                         else if (8 < d['crimes'].length && d['crimes'].length <= 25)
-                            safety = "<span class='badge new black-text yellow'>MODERATE</span></a>"
+                            safety = "<span id='myBadge' class='badge new black-text yellow'>MODERATE</span></a>"
                         else
-                            safety = "<span class='badge new black-text red'>STAY ALERT</span></a>"
+                            safety = "<span id='myBadge' class='badge new black-text red'>STAY ALERT</span></a>"
 
                         $(".collection").append("<a class='black-text collection-item' onclick='openMap("+this.lat+","+this.lon+")'>"+this.name+safety);
                     }
